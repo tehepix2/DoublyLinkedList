@@ -14,7 +14,7 @@ public class MagazineRack {
         boolean isNotNull = true;
    
         while (isNotNull) {
-            if(start.getNext() == null) {
+            if(start.getNext() == head) {
                 isNotNull = false;
                 System.out.println(displayCount + " -- " + ((Magazine)start.getItem()).getName());
                 displayCount++;
@@ -30,16 +30,7 @@ public class MagazineRack {
         displayCount = 1;
     }
 
-   public Link getNull(Link start) {
-        if(start.getNext() == null) {
-            return start;
-        }
-        else {
-            return getNull(start.getNext());
-        }
-        
-
-    }
+   
         
     
     public Magazine chooseItem(Link start, int count) {

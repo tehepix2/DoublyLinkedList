@@ -29,13 +29,17 @@ class Main {
       Magazine mag2 = new Magazine("eGg", "egg", "bingus", "burger king");
       Magazine mag3 = new Magazine("egG", "egg", "bingus", "mcdonalds");
 
-      Link node3 = new Link(mag3, null);
-      Link node2 = new Link(mag2, node3);
-      Link node1 = new Link(mag1, node2);
+      Link node3 = new Link(mag3, null, null);
+      Link node2 = new Link(mag2, node3, null);
+      Link node1 = new Link(mag1, node2, null);
+
+      node3.setNext(node1);
+      node3.setPrev(node2);
+      node2.setPrev(node1);
+      node1.setPrev(node3);
 
       MagazineRack rack1 = new MagazineRack(node1);
-      
-
+    
       boolean loop = true;
       while(loop) {
         System.out.println("Welcome to your magazine rack!");
@@ -110,7 +114,7 @@ class Main {
           System.out.print("Enter content: ");
           String cContent = input.next();
           lib.clearConsole();
-          rack1.getNull(rack1.getHead()).setNext(new Link(new Magazine(cName, cGenre, cContent, cAuthor), null));
+      
 
         }
 
