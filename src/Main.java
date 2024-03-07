@@ -47,17 +47,41 @@ class Main {
         int menuChoice = input.nextInt();
         lib.clearConsole();
         if (menuChoice == 1) {
-          rack1.displayRack(rack1.getHead());
-          System.out.print("What would you like to access? : ");
-          int magChoice = input.nextInt();
+          System.out.println("View from top or bottom?\n1 -- Top\n2 -- Bottom");
+          int orderChoice = input.nextInt();
           lib.clearConsole();
-          System.out.println("Title: " + rack1.chooseItem(rack1.getHead(), magChoice).getName());
-          System.out.println("Genre: " + rack1.chooseItem(rack1.getHead(), magChoice).getGenre());
-          System.out.println("Author: " + rack1.chooseItem(rack1.getHead(), magChoice).getAuthor());
-          rack1.chooseItem(rack1.getHead(), magChoice).displayContent();
-          System.out.println("Enter anything to continue...");
-          int continueThing = input.nextInt();
-          lib.clearConsole();
+          if (orderChoice == 1) {
+            rack1.displayRack(rack1.getHead());
+            System.out.print("What would you like to access? : ");
+            int magChoice = input.nextInt();
+            lib.clearConsole();
+            System.out.println("Title: " + rack1.chooseItem(rack1.getHead(), magChoice).getName());
+            System.out.println("Genre: " + rack1.chooseItem(rack1.getHead(), magChoice).getGenre());
+            System.out.println("Author: " + rack1.chooseItem(rack1.getHead(), magChoice).getAuthor());
+            rack1.chooseItem(rack1.getHead(), magChoice).displayContent();
+            System.out.println("Enter anything to continue...");
+            int continueThing = input.nextInt();
+            lib.clearConsole();
+          }
+          else if (orderChoice == 2) {
+            rack1.rDisplayRack(rack1.getHead());
+            System.out.print("What would you like to access? : ");
+            int magChoice = input.nextInt();
+            lib.clearConsole();
+            System.out.println("Title: " + rack1.rChooseItem(rack1.getHead(), magChoice).getName());
+            System.out.println("Genre: " + rack1.rChooseItem(rack1.getHead(), magChoice).getGenre());
+            System.out.println("Author: " + rack1.rChooseItem(rack1.getHead(), magChoice).getAuthor());
+            rack1.rChooseItem(rack1.getHead(), magChoice).displayContent();
+            System.out.println("Enter anything to continue...");
+            int continueThing = input.nextInt();
+            lib.clearConsole();
+          }
+          else {
+            System.out.println("Invalid input!");
+            lib.sleep(1500);
+            lib.clearConsole();
+          }
+          
         }
 
         else if (menuChoice == 2) {
@@ -114,7 +138,7 @@ class Main {
           System.out.print("Enter content: ");
           String cContent = input.next();
           lib.clearConsole();
-      
+          rack1.getLast(rack1.getHead()).setNext(new Link(new Magazine(cName, cGenre, cContent, cAuthor), rack1.getHead(), rack1.getLast(rack1.getHead())));
 
         }
 

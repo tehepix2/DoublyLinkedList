@@ -12,7 +12,7 @@ public class MagazineRack {
     }
     public void displayRack(Link start) {
         boolean isNotNull = true;
-   
+        
         while (isNotNull) {
             if(start.getNext() == head) {
                 isNotNull = false;
@@ -27,16 +27,55 @@ public class MagazineRack {
             }      
         }
 
+        
+    }
+    public void rDisplayRack(Link start) {
+        boolean isNotStart = true;
+        
+        while (isNotStart) {
+            if(start.getPrevious() == head) {
+                isNotStart = false;
+                System.out.println(displayCount + " -- " + ((Magazine)start.getItem()).getName());
+                displayCount++;
+            }
+            else {
+                System.out.println(displayCount + " -- " + ((Magazine)start.getItem()).getName());
+                displayCount++;
+                displayRack(start.getPrevious());
+                isNotStart = false;
+            }      
+        }
         displayCount = 1;
+        
     }
 
-   
-        
     
+
+    
+    public Link getLast(Link start) {
+        if(start.getNext() == head) {
+            return start;
+        }
+        else {
+            return getLast(start.getNext());
+        }
+        
+
+    }
     public Magazine chooseItem(Link start, int count) {
         if(count > 1) {
             count--;
             return chooseItem(start.getNext(), count);
+            
+        }
+        return (Magazine)start.getItem();
+        
+
+    }
+    public Magazine rChooseItem(Link start, int count) {
+        if(count > 1) {
+            count--;
+            return chooseItem(start.getPrevious(), count);
             
         }
         return (Magazine)start.getItem();

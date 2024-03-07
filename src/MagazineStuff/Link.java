@@ -30,4 +30,5 @@ public class Link {
     public void setPrev(Link prevLink) {
         this.prevNode = prevLink;
     }
+    
 }
